@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-PeopleJam//[Ll]ibrary/
+PeopleJam/[Ll]ibrary/
 PeopleJam/[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
