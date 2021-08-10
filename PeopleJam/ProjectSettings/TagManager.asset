@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Mask
   - Water
   - UI
-  - 
-  - 
+  - LitWorld
+  - ShadowWorld
   - 
   - 
   - 
