@@ -59,7 +59,7 @@ public class LightMaskCamera : MonoBehaviour
         {
             lightMaster.CycleLights(lightSources[i],maskMeshs[i] );
         }
-        
+        LightJitter();
     }
 
     private void InitiateStartup()
@@ -69,8 +69,21 @@ public class LightMaskCamera : MonoBehaviour
         CreateMasks();
         CreateRender();
         GetComponent<LightRaySystem>().collisionObjects = litMasks | unlitMasks;
+
+        
     }
 
+
+    public void LightJitter()
+    {
+
+        for (int i = 0; i < lightSources.Length; i++)
+        {
+            lightSources[i].transform.localPosition = new Vector3(lightSources[i].transform.localPosition.x - 1, lightSources[i].transform.localPosition.y, lightSources[i].transform.localPosition.z);
+            lightSources[i].transform.localPosition = new Vector3(lightSources[i].transform.localPosition.x+1, lightSources[i].transform.localPosition.y, lightSources[i].transform.localPosition.z);
+        }
+
+    }
 
     private void CreateCameras()
     {

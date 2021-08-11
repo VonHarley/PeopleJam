@@ -104,7 +104,6 @@ public void GrabVerts(GameObject source)
             if (hit.transform != null)
                 if (!Sray.CheckInArray(hitObjects, hit.transform.gameObject))
                 {
-                    //HACK To lower layer requirment, should probably custom scripts this to the custom objects
                     //TASK need to seperate this into its own function to call again when secondary ray hits another object
                     if (hit.transform.gameObject.GetComponent<CustomObject>())
                     {
@@ -121,7 +120,6 @@ public void ObjectVerts(Transform obj,GameObject source)
     {
         RaycastHit hit;
 
-        Ray rayDir;
         Vector3 hitPoint = (obj.gameObject.GetComponent<ObsticleHit>().points[i].transform.position);
         Physics.Raycast(source.transform.position, hitPoint, out hit);
 
