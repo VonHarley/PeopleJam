@@ -15,6 +15,8 @@ private Vector3[] vertices;
 
 public GameObject[] hitObjects;
 
+public GameObject[] nonRefractingObjects;
+
 private Mesh meshMask;
 
 public LayerMask collisionObjects;
@@ -87,6 +89,7 @@ public void ClearArrays()
 {
     hitObjects = new GameObject[0];
     vertices = new Vector3[0];
+        nonRefractingObjects = new GameObject[0];
 }
 
 
@@ -102,13 +105,17 @@ public void GrabVerts(GameObject source)
         RaycastHit hit;
         Physics.Raycast(source.transform.position, Quaternion.AngleAxis(i * 10, Vector3.forward) * Vector3.right, out hit);
             if (hit.transform != null)
-                if (!Sray.CheckInArray(hitObjects, hit.transform.gameObject))
+                if (!Sray.CheckInArray(hitObjects, hit.transform.gameObject) && !Sray.CheckInArray(nonRefractingObjects, hit.transform.gameObject))
                 {
                     //TASK need to seperate this into its own function to call again when secondary ray hits another object
                     if (hit.transform.gameObject.GetComponent<CustomObject>())
                     {
                         ObjectVerts(hit.transform,source);
                         hitObjects = Sray.AppendArray(hitObjects, hit.transform.gameObject);
+                    }
+                    else
+                    {
+                        nonRefractingObjects = Sray.AppendArray(nonRefractingObjects, hit.transform.gameObject);
                     }
         }
     }
